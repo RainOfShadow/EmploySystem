@@ -6,16 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9"/>
     <title>就业管理系统</title>
     <link rel="stylesheet" href="css/employ.css"/>
+<!--    <link rel="stylesheet" href="css/bootstrap.min.css"/>-->
 </head>
 <body class="index" style="background-image:url(images/pagebg.jpg)">
 <div id="topbar">
     <div class="container">
         <ul class="link-list left editable" data-editable="type=list;name=no_channel_top">
-
+            <li th:if="${UserName} ne 'anonymousUser'"><a th:text="${UserName}"></a></li>
         </ul>
         <ul class="right link-list">
-            <li class="first"><a href="/register">注册</a></li>
-            <li><a href="/login">登录</a></li>
+            <li class="first" th:if="${UserName} eq 'anonymousUser'"><a href="/register">注册</a></li>
+            <li th:if="${UserName} eq 'anonymousUser'"><a href="/login">登录</a></li>
+            <li th:if="${UserName} ne 'anonymousUser'"><a th:href="@{/logout}">退出登陆</a></li>
         </ul>
     </div>
 </div>
@@ -404,7 +406,7 @@
         </div>
     </div>
     <div style="display:none">
-        <script src="//s4.cnzz.com/stat.php?id=5947016&amp;web_id=5947016" ></script>
+        <script src="//s4.cnzz.com/stat.php?id=5947016&amp;web_id=5947016"></script>
     </div>
 </div>
 <script src="js/jquery-1.10.2.min.js"></script>
