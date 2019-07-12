@@ -3,7 +3,6 @@ package cn.org.y24.EmploySystem.controller;
 import cn.org.y24.EmploySystem.service.DemoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,12 +13,11 @@ public class DemoController {
     @Resource
     private DemoService demoService;
 
-    @RequestMapping("selectAllUse/rs")
+    @RequestMapping("/selectAllUsers")
     public String selectAllUsers(Model model) {
         model.addAttribute("Users", demoService.userList());
         return "users";
     }
-
     @RequestMapping("/testControllerParameter")
     public String testControllerParameter() {
         return "testControllerParameter";
