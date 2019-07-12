@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <title>就业管理系统</title>
+    <link rel="stylesheet" href="css/employ.css"/>
+</head>
+<body class="index" style="background-image:url(images/pagebg.jpg)">
+<div id="topbar">
+    <div class="container">
+        <ul class="link-list left editable" data-editable="type=list;name=no_channel_top">
+
+        </ul>
+        <ul class="right link-list">
+            <li class="first"><a href="/register">注册</a></li>
+            <li><a href="/login">登录</a></li>
+        </ul>
+    </div>
+</div>
+<div id="header">
+    <div class="container">
+        <a href="index.html" class="logo" title="就业管理系统"><img src="images/logo.png" alt=""/></a>
+        <!--校庆结束后恢复
+        -->
+        <form action="https://news.uestc.edu.cn/" method="get" target="_blank" class="search-form">
+            <input name="n" value="UestcNews.Front.Search.Page" type="hidden"/>
+            <label>
+                <input type="text" name="Keyword" placeholder="站内搜索"/>
+            </label>
+            <input class="btn" type="submit" value="Search"/>
+        </form>
+    </div>
+</div>
+
+<!-- 资讯信息分类展示 -->
+<div id="navi">
+    <div class="container">
+        <ul class="navigations">
+
+            <li class="first odd nth1">
+                <a class="navigation" href="http://www.news.uestc.edu.cn" target="_self">最新公告</a>
+                <ul class="sub-navi">
+
+                </ul>
+            </li>
+
+            <li class="even nth2">
+                <a class="navigation" href="3d3fc1112870f1b2409f7d924a6fa8b4.html">人才推荐</a>
+                <ul class="sub-navi">
+
+                </ul>
+            </li>
+
+            <li class="odd nth3">
+                <a class="navigation" href="1cf5b9420379278edef0d8656a5883a3.html">最新职位</a>
+                <ul class="sub-navi">
+
+                </ul>
+            </li>
+
+            <li class="even nth4">
+                <a class="navigation" href="http://www.hr.uestc.edu.cn/" target="_blank">最新调查</a>
+                <ul class="sub-navi">
+
+                </ul>
+            </li>
+
+            <li class="odd nth5">
+                <a class="navigation" href="javascript:;" target="_self">政策法规</a>
+                <ul class="sub-navi">
+
+                </ul>
+            </li>
+
+            <li class="even nth6">
+                <a class="navigation" href="http://www.rd.uestc.edu.cn/" target="_blank">指导培训</a>
+                <ul class="sub-navi">
+
+                </ul>
+            </li>
+
+            <li class="odd nth7">
+                <a class="navigation" href="javascript:" target="">实习兼职</a>
+                <ul class="sub-navi">
+
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<!-- 重要信息滚动视图 -->
+<div id="spotlight">
+    <div class="container">
+        <div class="dog"></div>
+        <div class="slideshow" data-editable="type=list;name=slideshow" data-type="fade" data-interval="10000"
+             data-animation-time="1000">
+            <div class="slides-wrapper">
+
+                <a class="slide active">
+                    <img src="images/slide1.png" alt=""/>
+                </a>
+
+                <a class="slide ">
+                    <img src="images/slide2.png" alt=""/>
+                </a>
+
+                <a class="slide ">
+                    <img src="images/slide3.png" alt=""/>
+                </a>
+
+                <a class="slide ">
+                    <img src="images/slide4.png" alt=""/>
+                </a>
+
+                <a class="slide ">
+                    <img src="images/slide5.png" alt=""/>
+                </a>
+
+            </div>
+            <div class="indicators">
+
+                <a class="indicator active" href="#" data-slide="1"></a>
+
+                <a class="indicator " href="#" data-slide="2"></a>
+
+                <a class="indicator " href="#" data-slide="3"></a>
+
+                <a class="indicator " href="#" data-slide="4"></a>
+
+                <a class="indicator " href="#" data-slide="5"></a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="main-content">
+    <div class="container clearfix">
+
+        <!-- 校内校外招聘信息 -->
+        <div class="index-left-column clearfix">
+            <div class="news-left">
+                <div class="news-block">
+                    <div class="block-title">
+                        招聘信息
+                        <a class="more" target="_blank" href="https://news.uestc.edu.cn/">更多</a>
+                    </div>
+                    <div class="block-content">
+                        <ul>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72353"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">曾勇校长出席“新工科与一流本科建设”研讨会并作主题报告 </a>
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72395"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">学校召开专题会议加强沙河校区建设 </a>
+
+                                <span><img src="images/new.png" alt=""/></span>
+
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72352"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">我校与航天科技集团共建航天科技协同创新中心 </a>
+
+                                <span><img src="images/new.png" alt=""/></span>
+
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72336"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">【爱国情
+                                奋斗者】沈长发：扎根成电热土 奠定长青基业 </a>
+
+                                <span><img src="images/new.png" alt=""/></span>
+
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72384"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">【对标争先】马克思主义学院开展“不忘初心、牢记使命”主题教育 </a>
+
+                                <span><img src="images/new.png" alt=""/></span>
+
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72370"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">浙江省衢州市代表团来校洽谈合作 </a>
+
+                                <span><img src="images/new.png" alt=""/></span>
+
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72301"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">学校举行学习贯彻《中国共产党支部工作条例》
+                                专题培训会 </a>
+
+                                <span><img src="images/new.png" alt=""/></span>
+
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72365"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">学校举行2019年新生及新入职辅导员系列培训 </a>
+
+                                <span><img src="images/new.png" alt=""/></span>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="news-active-list news-block tab">
+                    <div class="block-title">
+                        <a target="_blank" class="item-title active" data-basic-key="NewsTypeScholarship"
+                           href="https://news.uestc.edu.cn/?n=UestcNews.Front.Category.Page&amp;CatId=66">
+                            校内招聘信息 </a>
+
+                        <a target="_blank" class="item-title" data-basic-key="NewsTypeHumanities"
+                           href="https://news.uestc.edu.cn/?n=UestcNews.Front.Category.Page&amp;CatId=67">
+                            校外招聘信息 </a>
+
+                    </div>
+
+                    <!--学术讲座-->
+                    <div class="block-content content-list NewsTypeScholarship">
+                        <ul>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72323"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">物理论坛：Control
+                                of real- and reciprocal-space topological properties in SrRuO3 epitaxial ultrathin
+                                film </a>
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72315"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">2019年度无线通信前沿技术研讨会 </a>
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72310"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">基础论坛：Colloidal
+                                nanoparticles for energy technologies </a>
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72308"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">教学工作坊：提高教学水平，加强教材建设 </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <!--文化活动-->
+                    <div class="block-content content-list NewsTypeHumanities" style="display: none">
+                        <ul>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72286"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">关于开展“我和我的祖国”
+                                庆祝新中国成立70周年作品征集活动的通知 </a>
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72371"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">《成电带我看世界》《走进成电，走向世界》征稿通知 </a>
+                                <span><img src="images/new.png" alt=""/></span>
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72170"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">展览预告：“表达的魅力——学术期刊的艺术封面展” </a>
+                            </li>
+
+                            <li><a href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72152"
+                                   target="_blank"
+                                   style="float:left;max-width:260px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">2019年成电国际“看世界摄影大赛”作品征集 </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="news-right">
+                <div class="news-block">
+                    <div class="block-title">
+                        热门链接
+                    </div>
+
+                    <a class="block-content focus-news clearfix"
+                       href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72341"
+                       target="_blank">
+                        <div class="title">
+                            高见博士在《物理报道》发表“计算社会经济学”综述论文
+                        </div>
+                        <div class="detail clearfix">
+                            <div class="image left">
+                                <img src="https://news.uestc.edu.cn/upload/image/1027fe5be6fe42f23e20073ba394b35a.png"
+                                     width="160" alt=""/>
+                            </div>
+                            <div class="right desc">
+                                　　近日，电子科技大学大数据研究中心高见博士、基础与前沿研究院张翼成教授和大数据研究中心周涛教授在《物理报道》（Ph...
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="block-content focus-news clearfix"
+                       href="https://news.uestc.edu.cn/?n=UestcNews.Front.Document.ArticlePage&amp;Id=72101"
+                       target="_blank">
+                        <div class="title">
+                            Mariani博士在《物理报道》发表“复杂网络中嵌套性”综述论文
+                        </div>
+                        <div class="detail clearfix">
+                            <div class="image left">
+                                <img src="https://news.uestc.edu.cn/upload/image/f736fbe53bd28950fc4caf297e5cd8c9.png"
+                                     width="160" alt=""/>
+                            </div>
+                            <div class="right desc">
+                                　　近日，电子科技大学基础与前沿研究院吕琳媛教授团队Manuel Sebastian Mariani博士在国际著名期刊《物理报道》（Physic...
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 导航 -->
+        <div class="index-right-column">
+            <div class="column-inner">
+                <ul class="right-link-list" data-editable="type=list;name=index-right-navi">
+
+                    <li class="first"><a href="http://nav.uestc.edu.cn/" target="_blank">就业信息中心</a></li>
+
+                    <li><a href=" http://portal.uestc.edu.cn/" target="_blank">办公管理</a></li>
+
+                    <li><a href="http://mail.uestc.edu.cn/" target="_blank">毕业生管理</a></li>
+
+                    <li><a href="http://www.lib.uestc.edu.cn" target="_blank">数据统计查询与分析</a></li>
+
+                    <li><a href="http://www.alumni.uestc.edu.cn/" target="_blank">就业咨询服务</a></li>
+
+                    <li><a href="http://www.edf.uestc.edu.cn/" target="_blank">离校管理</a></li>
+
+                </ul>
+
+                <div class="block-image">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="container">
+        <div class="footer-friend-link clearfix" data-editable="type=list;name=bottom-links">
+            <ul>
+
+                <li class="first"><a href="http://www.gov.cn/" target="_blank">中国就业网</a></li>
+
+                <li><a href="http://www.moe.gov.cn/" target="_blank">教育部</a></li>
+
+                <li><a href="http://www.miit.gov.cn/n11293472/index.html" target="_blank">工业和信息化部</a></li>
+
+                <li><a href="http://www.scedu.net/" target="_blank">四川省教育厅</a></li>
+
+                <li><a href="http://www.univs.cn/" target="_blank">中国大学生在线</a></li>
+
+            </ul>
+        </div>
+        <div class="footer-bottom clearfix">
+            <div class="left">
+                <div class="editable" data-editable="type=fragment;name=footer-left-content">
+                    <p>
+                        清水河校区：成都市高新区（西区）西源大道2006号　邮编： 611731 </p>
+                    <p>
+                        沙河校区：成都市建设北路二段四号　邮编：610054</p>
+                    <p>
+                        蜀ICP备 05006379 号 I　川公网安备 51019002000280 号 </p>
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <a href="491dbbbf56276749f811c02073c07bca.html" style="margin-right:10px;">
+                        <img src="imageswechat-logo.png" alt=""/>
+                    </a>
+                    <a target="_blank" href="http://weibo.com/u/3982954755">
+                        <img src="/images/weibo-logo.png" alt=""/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display:none">
+        <script src="//s4.cnzz.com/stat.php?id=5947016&amp;web_id=5947016" ></script>
+    </div>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/uestc.js"></script>
+<script src="js/grayscale.js"></script>
+
+
+</body>
+</html>
