@@ -1,56 +1,222 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
        
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <meta charset="UTF-8">
         <title>register</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <style type="text/css">
+        .divideLine {
+            content: ' ';
+            display: block;
+            width: 100%;
+            height: 2px;
+            margin-top: 10px;
+            background: -moz-linear-gradient(left, rgba(147, 184, 189, 0) 0%, rgba(147, 184, 189, 0.8) 20%, rgba(147, 184, 189, 1) 53%, rgba(147, 184, 189, 0.8) 79%, rgba(147, 184, 189, 0) 100%);
+            background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(147, 184, 189, 0)), color-stop(20%, rgba(147, 184, 189, 0.8)), color-stop(53%, rgba(147, 184, 189, 1)), color-stop(79%, rgba(147, 184, 189, 0.8)), color-stop(100%, rgba(147, 184, 189, 0)));
+            background: -webkit-linear-gradient(left, rgba(147, 184, 189, 0) 0%, rgba(147, 184, 189, 0.8) 20%, rgba(147, 184, 189, 1) 53%, rgba(147, 184, 189, 0.8) 79%, rgba(147, 184, 189, 0) 100%);
+            background: -o-linear-gradient(left, rgba(147, 184, 189, 0) 0%, rgba(147, 184, 189, 0.8) 20%, rgba(147, 184, 189, 1) 53%, rgba(147, 184, 189, 0.8) 79%, rgba(147, 184, 189, 0) 100%);
+            background: -ms-linear-gradient(left, rgba(147, 184, 189, 0) 0%, rgba(147, 184, 189, 0.8) 20%, rgba(147, 184, 189, 1) 53%, rgba(147, 184, 189, 0.8) 79%, rgba(147, 184, 189, 0) 100%);
+            background: linear-gradient(left, rgba(147, 184, 189, 0) 0%, rgba(147, 184, 189, 0.8) 20%, rgba(147, 184, 189, 1) 53%, rgba(147, 184, 189, 0.8) 79%, rgba(147, 184, 189, 0) 100%);
+        }
+
+        .customLabel {
+            color: rgb(64, 92, 96);
+            position: relative;
+            cursor: default
+
+        }
+
+        .customInput {
+            width: 92%;
+            min-height: 40px;
+            margin-top: 4px;
+            padding: 10px 5px 10px 32px;
+            border: 1px solid rgb(178, 178, 178);
+            -webkit-appearance: textfield;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
+            -moz-box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
+            box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+            -webkit-writing-mode: horizontal-tb !important;
+            text-rendering: auto;
+            color: initial;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-indent: 0;
+            text-shadow: none;
+            display: inline-block;
+            text-align: start;
+            -webkit-appearance: textfield;
+            background-color: white;
+            -webkit-rtl-ordering: logical;
+            cursor: text;
+            margin: 0;
+            font: 400 13.3333px Arial;
+            padding: 1px 0;
+            border-width: 2px;
+            border-style: inset;
+            border-color: initial;
+            border-image: initial;
+        }
+
+        .formButton {
+            width: 30%;
+            cursor: pointer;
+            background: rgb(61, 157, 179);
+            padding: 8px 5px;
+            font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+            color: #fff;
+            font-size: 24px;
+            border: 1px solid rgb(28, 108, 122);
+            margin-bottom: 10px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 1px 6px 4px rgba(0, 0, 0, 0.07) inset, 0 0 0 3px rgb(254, 254, 254), 0 5px 3px 3px rgb(210, 210, 210);
+            -moz-box-shadow: 0 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
+            0 0 0 3px rgb(254, 254, 254),
+            0 5px 3px 3px rgb(210, 210, 210);
+            box-shadow: 0 1px 6px 4px rgba(0, 0, 0, 0.07) inset, 0 0 0 3px rgb(254, 254, 254), 0 5px 3px 3px rgb(210, 210, 210);
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+            user-select: none;
+            white-space: pre;
+            align-items: flex-start;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<div class="wrap">
-       
-    <div class="container">
-                <h1>Sign up</h1>
-               
-        <form>
-                        <input type="text" placeholder="Your username"/>
-                        <input type="text" placeholder="Your email"/>
-
-
-                        <input type="password" placeholder="password"/>
-                        <input type="password" placeholder="Please confirm your password"/>
-                        <input type="submit" value="Sign up"/>
-                        <p class="change_link" align="center">
-                            <span class="text">Already a member ?</span>
-                            <a href="login.html" class="to_login"> Go and log in </a>
-                        </p>
-                   
-        </form>
-           
-    </div>
-       
-    <ul>
-               
-        <li></li>
-               
-        <li></li>
-               
-        <li></li>
-               
-        <li></li>
-               
-        <li></li>
-               
-        <li></li>
-               
-        <li></li>
-               
-        <li></li>
-               
-        <li></li>
-               
-        <li></li>
-           
-    </ul>
+<div style=" width: 100%;
+             height: 100%;
+             position: relative;
+            text-align: center;">
+    <header>
+        <h1>Easy to register, happy to live!</h1>
+    </header>
+    <section>
+        <div style="right: 0;
+    min-height: 560px;
+    margin: 0 auto;
+    width: 500px;
+    position: relative;">
+            <div style="position: absolute;
+    top: 0;
+    width: 88%;
+    padding: 18px 6% 60px 6%;
+    margin: 0 0 35px 0;
+    background: rgb(247, 247, 247);
+    border: 1px solid rgba(147, 184, 189,0.8);
+    box-shadow: 0 2px 5px rgba(105, 108, 109, 0.7), 0 0 8px 5px rgba(208, 223, 226, 0.4) inset;
+    border-radius: 5px;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;">
+                <h1>Register</h1>
+                <div class="divideLine"></div>
+                <p>
+                    <label for="username" class="customLabel" id="usernameLabel">
+                        Your username
+                    </label>
+                    <input type="text" id="username" class="customInput" name="username" required
+                           placeholder="username">
+                </p>
+                <p>
+                    <label for="password" class="customLabel" id="passwordLabel">
+                        Your password
+                    </label>
+                    <input type="password" id="password" class="customInput" name="password" required
+                           placeholder="password">
+                </p>
+                <p>
+                    <label for="password" class="customLabel" id="confirmPasswordLabel">
+                        Confirm password
+                    </label>
+                    <label for="confirmPassword"></label>
+                    <input type="password" id="confirmPassword"
+                           class="customInput" required
+                           placeholder="confirm password">
+                <form>
+                    <label>
+                        <input type="radio" name="type" value="graduate" checked>Graduate
+                    </label>
+                    <label>
+                        <input type="radio" name="type" value="company">Company
+                    </label>
+                </form>
+                </p>
+                <input type="reset" data-editable="false" value="Reset" class="formButton">
+                <button id="submitButton" class="formButton">Sign up</button>
+                <br>
+                <a href="/userRecovery">Forgot password?</a>
+                <a href="/login">Already register?</a>
+                <div class="divideLine"></div>
+                <span id="registerResult"></span>
+            </div>
+        </div>
+    </section>
 </div>
 </body>
+<script>
+    $(function () {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        $(document).ajaxSend(function (e, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+        $("#submitButton").click(function () {
+            let username = $("#username").val();
+            let password = $("#password").val();
+            let confirmpassword = $("#confirmPassword").val();
+            if (password.length < 5 || password.length > 50) {
+                // $("#passwordLabel").after("<span style='color: red'> Password length should be 5-10</span>")
+                $("#passwordLabel").html("<span style='color: red'> Password length should be 5-10</span>");
+                return;
+            } else {
+                $("#passwordLabel").html("<span style='color: green'>Correct password length</span>")
+
+            }
+
+            if (confirmpassword !== password) {
+                $("#confirmPasswordLabel").html("<span style='color: red'>Not matched, try again!</span>")
+                return;
+            } else {
+                $("#confirmPasswordLabel").html("<span style='color: green'>matched, congratulations!</span>")
+            }
+            $.post("/doRegister", {
+                "username": username,
+                "password": password,
+                "type": $("input:radio:checked").val()
+            }, function (data, status, jqXHR) {
+                if (data) {
+                    if (data.toString() === "true") {
+                        $("#registerResult").html("<span style='color: green'>Register succeeded! <a href='/login'>login</a></span>");
+                        $("#usernameLabel").html("<span style='color: green'>Valid username!</span>")
+                    } else {
+                        $("#usernameLabel").html("<span style='color: red'>Invalid username! Try another.</span>")
+                        $("#registerResult").html("<span style='color: red'>Register failed!</span>");
+                    }
+
+                }
+            })
+            // alert("username: " + username + " password: " + password + " " + $("input:radio:checked").val());
+        })
+    });
+</script>
 </html>

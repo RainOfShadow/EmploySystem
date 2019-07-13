@@ -20,7 +20,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/home,/index").permitAll().and().formLogin();
+        http.authorizeRequests().antMatchers("/", "/home", "/index", "/register", "/doRegister").permitAll()
+                .antMatchers("/**/*.js", "/**/*.css", "/**/*.png", "/**/*.jpg").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin();
+//                .successForwardUrl("/");
     }
 
     @Override

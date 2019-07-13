@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9"/>
     <title>就业管理系统</title>
     <link rel="stylesheet" href="css/employ.css"/>
-<!--    <link rel="stylesheet" href="css/bootstrap.min.css"/>-->
+    <!--    <link rel="stylesheet" href="css/bootstrap.min.css"/>-->
 </head>
 <body class="index" style="background-image:url(images/pagebg.jpg)">
 <div id="topbar">
@@ -17,6 +17,7 @@
         <ul class="right link-list">
             <li class="first" th:if="${UserName} eq 'anonymousUser'"><a href="/register">注册</a></li>
             <li th:if="${UserName} eq 'anonymousUser'"><a href="/login">登录</a></li>
+            <li th:if="${UserName} ne 'anonymousUser'"><a th:href="@{/user(name=${UserName})}">用户中心</a></li>
             <li th:if="${UserName} ne 'anonymousUser'"><a th:href="@{/logout}">退出登陆</a></li>
         </ul>
     </div>
@@ -409,7 +410,7 @@
         <script src="//s4.cnzz.com/stat.php?id=5947016&amp;web_id=5947016"></script>
     </div>
 </div>
-<script src="js/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/uestc.js"></script>
 <script src="js/grayscale.js"></script>
 

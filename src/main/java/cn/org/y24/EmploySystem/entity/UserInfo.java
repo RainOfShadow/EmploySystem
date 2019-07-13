@@ -75,4 +75,8 @@ public class UserInfo implements Serializable, UserDetails {
         // TODO Auto-generated method stub
         return enabled;
     }
+
+    public String getRole() {
+        return role;
+    }
 }
