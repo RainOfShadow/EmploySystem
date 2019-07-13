@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <!--/*@thymesVar id="UserDetails" type="org.springframework.security.core.userdetails.UserDetails"*/-->
+    <title th:text="${UserDetails.getUsername()}"></title>
+</head>
+<body>
+<!--/*@thymesVar id="UserDetails" type="org.springframework.security.core.userdetails.UserDetails"*/-->
+<p th:text="${UserDetails.getUsername()}"></p>
+<p th:text="${UserDetails.getPassword()}"></p>
+<p th:text="${UserDetails.getAuthorities()}"></p>
+</body>
+</html>
