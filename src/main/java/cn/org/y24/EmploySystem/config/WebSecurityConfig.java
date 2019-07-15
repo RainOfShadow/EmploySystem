@@ -23,6 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/", "/home", "/index", "/register", "/doRegister").permitAll()
                 .antMatchers("/**/*.js", "/**/*.css", "/**/*.png", "/**/*.jpg").permitAll()
                 .anyRequest().authenticated()
+                .antMatchers("/admin", "/admin/*").hasRole("ADMIN")
                 .and()
                 .formLogin();
 //                .successForwardUrl("/");

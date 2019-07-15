@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{css/CustomForm.css}">
+    <!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
+    <title th:text="${SimpleUser.username}"></title>
+</head>
+<body>
+</div>
+<!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
+<div class="topDiv">
+    <header style="background: #0f6674;border-radius: 10px;">
+        <div>
+            <h1 th:text="${'Graduate user '+SimpleUser.username}"></h1>
+        </div>
+        <h1>Welcome to the Information Center!</h1>
+        <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+        <p th:text="${GraduateUserAdditionalInfo != null?'Additional information is logged. you can modify it now.' :'Additional information is not logged. you can add it now.'}">
+        </p>
+    </header>
+    <section>
+        <div class="DIV">
+            <div class="CustomDiv">
+                <h1>Password Management</h1>
+                <div class="divideLine"></div>
+                <p>
+                    <label for="oldPassword" class="customLabel" id="oldPasswordLabel">
+                        Old password
+                    </label>
+                    <input type="password" id="oldPassword" class="customInput" name="oldPassword" required
+                           placeholder="Old password">
+                </p>
+                <p>
+                    <label for="newPassword" class="customLabel" id="passwordLabel">
+                        Change password
+                    </label>
+                    <input type="password" id="newPassword" class="customInput" name="password" required
+                           placeholder="new password">
+                </p>
+                <p>
+                    <label for="confirmPassword" class="customLabel" id="confirmPasswordLabel">
+                        Confirm password
+                    </label>
+                    <label for="confirmPassword"></label>
+                    <input type="password" id="confirmPassword"
+                           class="customInput" required
+                           placeholder="confirm password">
+                </p>
+                <input type="reset" data-editable="false" value="Reset" class="formButton">
+                <button id="submitButton" class="formButton">Submit</button>
+                <div class="divideLine"></div>
+                <span id="registerResult"></span>
+            </div>
+        </div>
+        <div class="DIV">
+            <div class="CustomDiv">
+                <h1>Information Management</h1>
+                <div class="divideLine"></div>
+                <p>
+                    <label for="idCardNo" class="customLabel" id="idLabel">
+                        idCardNo
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="idCardNo" class="customInput" name="idCardNo"
+                           th:disabled="${GraduateUserAdditionalInfo != null?'true' :'false'}"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'idCardNo':GraduateUserAdditionalInfo.idCardNo}">
+                </p>
+                <p>
+                    <label for="name" class="customLabel" id="nameLabel">
+                        name
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="name"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'name':GraduateUserAdditionalInfo.name}">
+                </p>
+                <p>
+                    <label for="schoolNo" class="customLabel" id="schoolNoLabel">
+                        schoolNo
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="schoolNo"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'schoolNo':GraduateUserAdditionalInfo.schoolNo}">
+                </p>
+                <p>
+                    <label for="contractNo" class="customLabel" id="contractNoLabel">
+                        Contract No
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="contractNo" class="customInput" name="contractNo"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'contractNo':GraduateUserAdditionalInfo.contractNo}">
+                </p>
+                <p>
+                    <label for="emailAddress" class="customLabel" id="emailAddressLabel">
+                        Email address
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="emailAddress"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'Email address':GraduateUserAdditionalInfo.emailAddress}">
+                </p>
+                <p>
+                    <label for="othersReferralStuffID" class="customLabel" id="othersReferralStuffIDLabel">
+                        othersReferralStuffID
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="othersReferralStuffID"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'othersReferralStuffID':GraduateUserAdditionalInfo.othersReferralStuffID}">
+                </p>
+                <p>
+                    <label for="selfReferralStuffID" class="customLabel" id="selfReferralStuffIDLabel">
+                        selfReferralStuffID
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="selfReferralStuffID"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'selfReferralStuffID':GraduateUserAdditionalInfo.selfReferralStuffID}">
+                </p>
+                <p>
+                    <label for="school" class="customLabel" id="schoolLabel">
+                        school
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="school"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'school':GraduateUserAdditionalInfo.school}">
+                </p>
+                <p>
+                    <label for="sex" class="customLabel" id="sexLabel" th:text="sex">
+
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <br>
+                    <input type="text" id="sex"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'sex':(GraduateUserAdditionalInfo.sex ?'男':'女')}">
+                </p>
+                <p>
+                    <label for="national" class="customLabel" id="nationalLabel">
+                        national
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="national"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'national':GraduateUserAdditionalInfo.national}">
+                </p>
+                <p>
+                    <label for="degree" class="customLabel" id="degreeLabel">
+                        degree
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="degree"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'degree':GraduateUserAdditionalInfo.degree}">
+                </p>
+                <p>
+                    <label for="politicalLandscape" class="customLabel" id="politicalLandscapeLabel">
+                        politicalLandscape
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="politicalLandscape"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'politicalLandscape':GraduateUserAdditionalInfo.politicalLandscape}">
+                </p>
+                <p>
+                    <label for="address" class="customLabel" id="addressLabel">
+                        address
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="address"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'address':GraduateUserAdditionalInfo.address}">
+                </p>
+                <p>
+                    <label for="householdRegistration" class="customLabel" id="householdRegistrationLabel">
+                        householdRegistration
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="householdRegistration"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'householdRegistration':GraduateUserAdditionalInfo.householdRegistration}">
+                </p>
+                <p>
+                    <label for="maritalStatus" class="customLabel" id="maritalStatusLabel">
+                        maritalStatus
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="maritalStatus"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'maritalStatus':GraduateUserAdditionalInfo.maritalStatus}">
+                </p>
+                <p>
+                    <label for="schoolLeftTime" class="customLabel" id="schoolLeftTimeLabel">
+                        schoolLeftTime
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="schoolLeftTime"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'schoolLeftTime':GraduateUserAdditionalInfo.schoolLeftTime}">
+                </p>
+                <p>
+                    <label for="schoolLeftInfo" class="customLabel" id="schoolLeftInfoLabel">
+                        schoolLeftInfo
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="schoolLeftInfo"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'schoolLeftInfo':GraduateUserAdditionalInfo.schoolLeftInfo}">
+                </p>
+                <p>
+                    <label for="trainInfo" class="customLabel" id="trainInfoLabel">
+                        trainInfo
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="trainInfo"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'trainInfo':GraduateUserAdditionalInfo.trainInfo}">
+                </p>
+                <p>
+                    <label for="practiceExperience" class="customLabel" id="practiceExperienceLabel">
+                        practiceExperience
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="practiceExperience"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'practiceExperience':GraduateUserAdditionalInfo.practiceExperience}">
+                </p>
+                <p>
+                    <label for="resume" class="customLabel" id="resumeLabel">
+                        resume
+                    </label>
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <input type="text" id="resume"
+                           class="customInput"
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'resume':GraduateUserAdditionalInfo.resume}">
+                </p>
+                <input type="reset" data-editable="false" value="Reset" class="formButton">
+                <button id="ubmitButton" class="formButton">Submit</button>
+                <div class="divideLine"></div>
+                <span id="egisterResult"></span>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+<script>
+    $(function () {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        $(document).ajaxSend(function (e, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+        $("#submitButton").click(function () {
+            let username = $("#username").val();
+            let password = $("#password").val();
+            let confirmpassword = $("#confirmPassword").val();
+            if (password.length < 5 || password.length > 50) {
+                // $("#passwordLabel").after("<span style='color: red'> Password length should be 5-10</span>")
+                $("#passwordLabel").html("<span style='color: red'> Password length should be 5-10</span>");
+                return;
+            } else {
+                $("#passwordLabel").html("<span style='color: green'>Correct password length</span>")
+
+            }
+
+            if (confirmpassword !== password) {
+                $("#confirmPasswordLabel").html("<span style='color: red'>Not matched, try again!</span>")
+                return;
+            } else {
+                $("#confirmPasswordLabel").html("<span style='color: green'>matched, congratulations!</span>")
+            }
+            $.post("/doRegister", {
+                "username": username,
+                "password": password,
+                "type": $("input:radio:checked").val()
+            }, function (data, status, jqXHR) {
+                if (data) {
+                    if (data.toString() === "true") {
+                        $("#registerResult").html("<span style='color: green'>Register succeeded! <a href='/login'>login</a></span>");
+                        $("#usernameLabel").html("<span style='color: green'>Valid username!</span>")
+                    } else {
+                        $("#usernameLabel").html("<span style='color: red'>Invalid username! Try another.</span>")
+                        $("#registerResult").html("<span style='color: red'>Register failed!</span>");
+                    }
+
+                }
+            })
+            // alert("username: " + username + " password: " + password + " " + $("input:radio:checked").val());
+        })
+    });
+</script>
+</html>

@@ -18,6 +18,7 @@ public class DemoController {
         model.addAttribute("Users", demoService.userList());
         return "users";
     }
+
     @RequestMapping("/testControllerParameter")
     public String testControllerParameter() {
         return "testControllerParameter";
@@ -51,7 +52,6 @@ public class DemoController {
     @RequestMapping("/hello")
     @ResponseBody
     public String hello(String content) {
-
         return content;
     }
 

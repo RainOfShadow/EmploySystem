@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" th:href="@{css/CustomForm.css}">
     <!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
@@ -12,23 +14,13 @@
 <!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
 <div class="topDiv">
     <header style="background: #0f6674;border-radius: 10px;">
-        <div th:if="${SimpleUser.role eq 'ADMIN'}">
-            <h1 th:text="${'ADMIN '+SimpleUser.username}"></h1>
-        </div>
-        <div th:if="${SimpleUser.role eq 'company'}">
+        <div>
             <h1 th:text="${'Company user '+SimpleUser.username}"></h1>
         </div>
-        <div th:if="${SimpleUser.role eq 'graduate'}">
-            <h1 th:text="${'Graduate user '+SimpleUser.username}"></h1>
-        </div>
         <h1>Welcome to the Information Center!</h1>
-        <!--/*@thymesVar id="status" type="java.lang.String"*/-->
-        <div th:if="${status eq 'true'}">
-            <p>Additional information is logged. you can modify it now.</p>
-        </div>
-        <div th:if="${status eq 'false'}">
-            <p>Additional information isn't logged. you can add it now.</p>
-        </div>
+        <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+        <p th:text="${CompanyUserAdditionalInfo != null?'Additional information is logged. you can modify it now.' :'Additional information is not logged. you can add it now.'}">
+        </p>
     </header>
     <section>
         <div class="DIV">
@@ -69,32 +61,44 @@
                 <h1>Information Management</h1>
                 <div class="divideLine"></div>
                 <p>
-                    <label for="oldPassword" class="customLabel" id="oldPasswordLabel">
-                        Old password
+                    <label for="id" class="customLabel" id="idLabel">
+                        name
                     </label>
-                    <input type="password" id="oldPassword" class="customInput" name="oldPassword" required
-                           placeholder="Old password">
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <input type="text" id="id" class="customInput" name="id"
+                           th:disabled="${CompanyUserAdditionalInfo != null?'true' :'false'}"
+                           th:placeholder="${CompanyUserAdditionalInfo == null?'id':CompanyUserAdditionalInfo.id}">
                 </p>
                 <p>
-                    <label for="newPassword" class="customLabel" id="passwordLabel">
-                        Change password
+                    <label for="contractNo" class="customLabel" id="contractNoLabel">
+                        Contract No
                     </label>
-                    <input type="password" id="newPassword" class="customInput" name="password" required
-                           placeholder="new password">
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <input type="text" id="contractNo" class="customInput" name="contractNo"
+                           th:placeholder="${CompanyUserAdditionalInfo == null?'contractNo':CompanyUserAdditionalInfo.contractNo}">
                 </p>
                 <p>
-                    <label for="confirmPassword" class="customLabel" id="confirmPasswordLabel">
-                        Confirm password
+                    <label for="emailAddress" class="customLabel" id="emailAddressLabel">
+                        Email address
                     </label>
-                    <label for="confirmPassword"></label>
-                    <input type="password" id="confirmPassword"
-                           class="customInput" required
-                           placeholder="confirm password">
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <input type="text" id="emailAddress"
+                           class="customInput"
+                           th:placeholder="${CompanyUserAdditionalInfo == null?'Email address':CompanyUserAdditionalInfo.emailAddress}">
+                </p>
+                <p>
+                    <label for="annualInspectionStatus" class="customLabel" id="annualInspectionStatusLabel">
+                        Annual inspection status
+                    </label>
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <input type="text" id="annualInspectionStatus"
+                           class="customInput"
+                           th:placeholder="${CompanyUserAdditionalInfo == null?'Annual inspection status':CompanyUserAdditionalInfo.annualInspectionStatus}">
                 </p>
                 <input type="reset" data-editable="false" value="Reset" class="formButton">
-                <button id="submitButton" class="formButton">Submit</button>
+                <button id="ubmitButton" class="formButton">Submit</button>
                 <div class="divideLine"></div>
-                <span id="registerResult"></span>
+                <span id="egisterResult"></span>
             </div>
         </div>
     </section>

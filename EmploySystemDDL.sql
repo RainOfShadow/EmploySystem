@@ -4,7 +4,7 @@
 /*==============================================================*/
 
 
-DROP TABLE IF EXISTS ACCOUNT_ACCOUNT_BEHAVIOR;
+DROP TABLE IF EXISTS ACCOUNT_BEHAVIOR_LOG;
 
 DROP TABLE IF EXISTS ACCOUNT_BEHAVIOR;
 
@@ -31,9 +31,9 @@ DROP TABLE IF EXISTS STATISTICS;
 DROP TABLE IF EXISTS USER;
 
 /*==============================================================*/
-/* Table: ACCOUNT_ACCOUNT_BEHAVIOR                              */
+/* Table: ACCOUNT_BEHAVIOR_LOG                                  */
 /*==============================================================*/
-CREATE TABLE ACCOUNT_ACCOUNT_BEHAVIOR
+CREATE TABLE ACCOUNT_BEHAVIOR_LOG
 (
    BEHAVIOR_ID          VARCHAR(13) NOT NULL,
    USERNAME             VARCHAR(20),

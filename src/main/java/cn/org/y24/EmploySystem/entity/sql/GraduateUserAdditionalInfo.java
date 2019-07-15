@@ -42,10 +42,10 @@ public class GraduateUserAdditionalInfo {
     /// 培训经历
     private String trainInfo;
     /// 实践经历
-    private String practiceExprience;
+    private String practiceExperience;
     /// 简历
     private String resume;
-    public GraduateUserAdditionalInfo(String idCardNo, String name, String username, String schoolNo, String othersReferralStuffID, String selfReferralStuffID, String school, boolean sex, String national, String degree, String politicalLandscape, String emailAddress, String contractNo, String address, String householdRegistration, String maritalStatus, Date schoolLeftTime, String schoolLeftInfo, String trainInfo, String practiceExprience, String resume) {
+    public GraduateUserAdditionalInfo(String idCardNo, String name, String username, String schoolNo, String othersReferralStuffID, String selfReferralStuffID, String school, boolean sex, String national, String degree, String politicalLandscape, String emailAddress, String contractNo, String address, String householdRegistration, String maritalStatus, Date schoolLeftTime, String schoolLeftInfo, String trainInfo, String practiceExperience, String resume) {
         this.idCardNo = idCardNo;
         this.name = name;
         this.username = username;
@@ -65,7 +65,7 @@ public class GraduateUserAdditionalInfo {
         this.schoolLeftTime = schoolLeftTime;
         this.schoolLeftInfo = schoolLeftInfo;
         this.trainInfo = trainInfo;
-        this.practiceExprience = practiceExprience;
+        this.practiceExperience = practiceExperience;
         this.resume = resume;
     }
 
@@ -221,12 +221,12 @@ public class GraduateUserAdditionalInfo {
         this.trainInfo = trainInfo;
     }
 
-    public String getPracticeExprience() {
-        return practiceExprience;
+    public String getPracticeExperience() {
+        return practiceExperience;
     }
 
-    public void setPracticeExprience(String practiceExprience) {
-        this.practiceExprience = practiceExprience;
+    public void setPracticeExperience(String practiceExperience) {
+        this.practiceExperience = practiceExperience;
     }
 
     public String getResume() {

@@ -12,7 +12,7 @@
 <div id="topbar">
     <div class="container">
         <ul class="link-list left editable" data-editable="type=list;name=no_channel_top">
-            <li th:if="${UserName} ne 'anonymousUser'"><a th:text="${UserName}"></a></li>
+            <li th:if="${UserName} ne 'anonymousUser'"><a th:text="${'欢迎您 '+UserName}"></a></li>
         </ul>
         <ul class="right link-list">
             <li class="first" th:if="${UserName} eq 'anonymousUser'"><a href="/register">注册</a></li>

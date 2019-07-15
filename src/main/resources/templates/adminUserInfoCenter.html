@@ -1,63 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-       
+    <meta charset="UTF-8">
     <meta name="_csrf" th:content="${_csrf.token}"/>
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-    <meta charset="UTF-8">
-        <title>register</title>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" th:href="@{css/CustomForm.css}">
-
+    <!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
+    <title th:text="${SimpleUser.username}"></title>
 </head>
 <body>
+
+</div>
+<!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
 <div class="topDiv">
-    <header>
-        <h1>Easy to register, happy to live!</h1>
+    <header style="background: #0f6674;border-radius: 10px;">
+        <div>
+            <h1 th:text="${'Admin user '+SimpleUser.username}"></h1>
+        </div>
+        <h1>Welcome to the Information Center!</h1>
+        <!--/*@thymesVar id="AdminUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.AdminUserAdditionalInfo"*/-->
+        <p th:text="${AdminUserAdditionalInfo != null?'Additional information is logged. you can modify it now.' :'Additional information is not logged. you can add it now.'}">
+        </p>
     </header>
     <section>
-        <div class="DIV" >
+        <div class="DIV">
             <div class="CustomDiv">
-                <h1>Register</h1>
+                <h1>Password Management</h1>
                 <div class="divideLine"></div>
                 <p>
-                    <label for="username" class="customLabel" id="usernameLabel">
-                        Your username
+                    <label for="oldPassword" class="customLabel" id="oldPasswordLabel">
+                        Old password
                     </label>
-                    <input type="text" id="username" class="customInput" name="username" required
-                           placeholder="username">
+                    <input type="password" id="oldPassword" class="customInput" name="oldPassword" required
+                           placeholder="Old password">
                 </p>
                 <p>
-                    <label for="password" class="customLabel" id="passwordLabel">
-                        Your password
+                    <label for="newPassword" class="customLabel" id="passwordLabel">
+                        Change password
                     </label>
-                    <input type="password" id="password" class="customInput" name="password" required
-                           placeholder="password">
+                    <input type="password" id="newPassword" class="customInput" name="password" required
+                           placeholder="new password">
                 </p>
                 <p>
-                    <label for="password" class="customLabel" id="confirmPasswordLabel">
+                    <label for="confirmPassword" class="customLabel" id="confirmPasswordLabel">
                         Confirm password
                     </label>
                     <label for="confirmPassword"></label>
                     <input type="password" id="confirmPassword"
                            class="customInput" required
                            placeholder="confirm password">
-                <form>
-                    <label>
-                        <input type="radio" name="type" value="graduate" checked>Graduate
-                    </label>
-                    <label>
-                        <input type="radio" name="type" value="company">Company
-                    </label>
-                </form>
                 </p>
                 <input type="reset" data-editable="false" value="Reset" class="formButton">
-                <button id="submitButton" class="formButton">Sign up</button>
-                <br>
-                <a href="/userRecovery">Forgot password?</a>
-                <a href="/login">Already register?</a>
+                <button id="submitButton" class="formButton">Submit</button>
                 <div class="divideLine"></div>
                 <span id="registerResult"></span>
+            </div>
+        </div>
+        <div class="DIV">
+            <div class="CustomDiv">
+                <h1>Information Management</h1>
+                <div class="divideLine"></div>
+                <p>
+                    <label for="authenticationCode" class="customLabel" id="authenticationCodeLabel">
+                        authenticationCode
+                    </label>
+                    <!--/*@thymesVar id="AdminUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.AdminUserAdditionalInfo"*/-->
+                    <input type="text" id="authenticationCode" class="customInput" name="authenticationCode"
+                           th:disabled="${AdminUserAdditionalInfo != null?'true' :'false'}"
+                           th:placeholder="${AdminUserAdditionalInfo == null?'authenticationCode':AdminUserAdditionalInfo.authenticationCode}">
+                </p>
+                <input type="reset" data-editable="false" value="Reset" class="formButton">
+                <button id="ubmitButton" class="formButton">Submit</button>
+                <div class="divideLine"></div>
+                <span id="egisterResult"></span>
             </div>
         </div>
     </section>
