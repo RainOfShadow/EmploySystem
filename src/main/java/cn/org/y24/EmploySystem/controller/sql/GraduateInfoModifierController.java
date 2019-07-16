@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 
 @Controller
 public class GraduateInfoModifierController {
@@ -21,7 +23,7 @@ public class GraduateInfoModifierController {
 
     @PostMapping("/graduateInfoModifier")
     @ResponseBody
-    String graduateInfoModifier(HttpServletRequest httpServletRequest, @RequestParam(value = "info") String[] info) {
+    String graduateInfoModifier(HttpServletRequest httpServletRequest, @RequestParam(value = "info") String[] info) throws ParseException {
         final String username = SecurityContextHolder.getContext().getAuthentication().getName();
         if (userDetailsService.loadUserByUsername(username) == null) {
             return "505";
@@ -29,6 +31,7 @@ public class GraduateInfoModifierController {
         if (graduateInfoService.findGraduateInfoByUsername(username) != null) {
             graduateInfoService.deleteGraduate(username);
         }
+        System.out.println(Arrays.toString(info));
         graduateInfoService.addGraduateInfo(info[0],
                 info[1],
                 username,
@@ -36,7 +39,7 @@ public class GraduateInfoModifierController {
                 info[5],
                 info[6],
                 info[7],
-                info[8].equals("female,"),
+                info[8].equals("male"),
                 info[9],
                 info[10],
                 info[11],
@@ -45,7 +48,7 @@ public class GraduateInfoModifierController {
                 info[12],
                 info[13],
                 info[14],
-                new Date(info[15]),
+                new SimpleDateFormat("YYYY-MM-DD HH:MM:SS").parse(info[15]),
                 info[16],
                 info[17],
                 info[18],

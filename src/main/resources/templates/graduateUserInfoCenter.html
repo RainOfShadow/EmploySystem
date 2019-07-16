@@ -78,18 +78,6 @@
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'name':GraduateUserAdditionalInfo.name}">
                 </p>
-                <form>
-                    <label>
-                        <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
-                        <input type="radio" name="type" value="graduate"
-                               th:checked="${GraduateUserAdditionalInfo == null || GraduateUserAdditionalInfo.sex == 1?'true' :'false'}">male
-                    </label>
-                    <label>
-                        <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
-                        <input type="radio" name="type" value="company"
-                               th:checked="${GraduateUserAdditionalInfo != null && GraduateUserAdditionalInfo.sex == 0?'true' :'false'}">female
-                    </label>
-                </form>
                 <p>
                     <label for="schoolNo" class="customLabel" id="schoolNoLabel">
                         schoolNo
@@ -144,14 +132,14 @@
                            th:placeholder="${GraduateUserAdditionalInfo == null?'school':GraduateUserAdditionalInfo.school}">
                 </p>
                 <p>
-                    <label for="sex" class="customLabel" id="sexLabel" th:text="sex">
-
+                    <label for="sex" class="customLabel" id="sexLabel" >
+                        sex Ps : male|female
                     </label>
                     <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <br>
                     <input type="text" id="sex"
                            class="customInput"
-                           th:placeholder="${GraduateUserAdditionalInfo == null?'sex':(GraduateUserAdditionalInfo.sex ?'男':'女')}">
+                           th:placeholder="${GraduateUserAdditionalInfo == null?'sex':(GraduateUserAdditionalInfo.sex ?'male':'female')}">
                 </p>
                 <p>
                     <label for="national" class="customLabel" id="nationalLabel">
@@ -209,7 +197,7 @@
                 </p>
                 <p>
                     <label for="schoolLeftTime" class="customLabel" id="schoolLeftTimeLabel">
-                        schoolLeftTime
+                        schoolLeftTime Ps: YYYY-MM-DD HH:MM:SS
                     </label>
                     <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="schoolLeftTime"
