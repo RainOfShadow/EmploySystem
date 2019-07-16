@@ -12,20 +12,24 @@
             font-family: verdana, arial, sans-serif;
             font-size: 11px;
             color: #333333;
-            border-width: 1px;
+            height: 80%;
+            width: 80%;
+            border-width: 10px;
             border-color: #a9c6c9;
-            border-collapse: collapse;
+            border-radius: 5px;
         }
 
         table.altrowstable th {
-            border-width: 1px;
+            border-width: 10px;
             padding: 8px;
             border-style: solid;
             border-color: #a9c6c9;
+            border-radius: 10%;
         }
 
         table.altrowstable td {
-            border-width: 1px;
+            border-width: 10px;
+            border-radius: 10%;
             padding: 8px;
             border-style: solid;
             border-color: #a9c6c9;
@@ -128,7 +132,7 @@
                         </li>
 
                         <li class="even nth2 ">
-                            <a href="infoEnterprise.html">企业单位信息</a>
+                            <a href="/infoEnterprise">企业单位信息</a>
                         </li>
                     </ul>
                 </div>
@@ -136,7 +140,7 @@
                     <div class="page-title">
                         <div class="page-title-text">毕业生个人信息</div>
                         <div class="page-position">
-                            <a href="index.html">首页</a>
+                            <a href="index">首页</a>
 
                             / <a>毕业生个人信息</a>
 
@@ -213,28 +217,29 @@
                                         </tr>
                                         <tr>
                                             <td>自荐书</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                             <td>简历模板</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                         </tr>
                                         <tr>
                                             <td>求职信</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                             <td>简历内容设置</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                         </tr>
                                         <tr>
                                             <td>求职意向</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                             <td>简历预览</td>
-                                            <td></td>
-                                        </tr>
+                                            <td>unknown</td>
                                         </tr>
                                         <tr>
                                             <td>自我评价</td>
-                                            <td></td>
+                                            <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                                            <td th:text="${GraduateUserAdditionalInfo.resume}"></td>
                                             <td>Email</td>
-                                            <td></td>
+                                            <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                                            <td th:text="${GraduateUserAdditionalInfo.emailAddress}"></td>
                                         </tr>
                                     </table>
                                 </li>
@@ -248,27 +253,30 @@
                                         </tr>
                                         <tr>
                                             <td>教育经历</td>
-                                            <td></td>
+                                            <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                                            <td th:text="${GraduateUserAdditionalInfo.degree}"></td>
                                             <td>培训经历</td>
-                                            <td></td>
+                                            <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                                            <td th:text="${GraduateUserAdditionalInfo.trainInfo}"></td>
                                         </tr>
                                         <tr>
                                             <td>实践经历</td>
-                                            <td></td>
+                                            <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                                            <td th:text="${GraduateUserAdditionalInfo.practiceExperience}"></td>
                                             <td>语言能力</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                         </tr>
                                         <tr>
                                             <td>荣誉称号</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                             <td>奖学金</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                         </tr>
                                         <tr>
                                             <td>获得证书</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                             <td>其他经历</td>
-                                            <td></td>
+                                            <td>unknown</td>
                                         </tr>
                                     </table>
                                 </li>
