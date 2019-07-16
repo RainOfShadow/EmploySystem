@@ -4,6 +4,54 @@ $(function()
 	UESTC.initBlockImage();
 	$('.slideshow').each(UESTC.initSlideshow);
 
+	$(function()
+	{
+		$('.new-person-name').click(function()
+		{
+			var id = $(this).attr('data-id');
+			if (!id) return;
+			if ($(this).is('.active')) return;
+			$('.new-person-name.active').removeClass('active');
+			$(this).addClass('active');
+			$('.block.lingdao .block-content .person').slideUp();
+			$('.block.lingdao .block-content .person.person_id_'+id).slideDown();
+		});
+
+		$('.slideshow-image').click(function(event)
+		{
+			preview($(this));
+			event.preventDefault();
+		});
+
+
+		$('.tabs-head .tab').click(function()
+		{
+			if ($(this).is('.active')) return;
+			$(this).siblings('.active').removeClass('active');
+			$(this).addClass('active');
+			var targetEl = $(this).attr('data-for');
+			$('.tabs-content .tab.active').removeClass('active');
+			$('.tabs-content .tab.'+targetEl).addClass('active');
+		});
+
+		$("#hear li").click(function() {       /*----------------选项卡的点击事件，移动端用tap-----------------*/
+			$(this).css({/*选中选项卡的样式*/
+				color: "#249000",
+				borderBottom: "1px solid ##249000"
+			}).siblings().css({/*未选中选项卡的样式*/
+				color: "#000000",
+				borderBottom: "none"
+			});
+		});
+
+		$("#hear li").click(function() { /*----------------选项卡的点击事件，移动端用tap-----------------*/
+			$(this).addClass("action").siblings().removeClass("action");/*选中的li添加action类，其他的移除*/
+			var index = $(this).index();/*定义索引数值*/
+			$("#content li").eq(index).css("display", "block").siblings().css("display", "none");   /*相对应的第几个内容区显示，其他的隐藏*/
+		});
+
+	});
+
 });
 
 
