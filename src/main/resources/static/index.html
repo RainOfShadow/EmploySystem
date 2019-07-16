@@ -12,9 +12,11 @@
 <div id="topbar">
     <div class="container">
         <ul class="link-list left editable" data-editable="type=list;name=no_channel_top">
+            <!--/*@thymesVar id="UserName" type="java.lang.String"*/-->
             <li th:if="${UserName} ne 'anonymousUser'"><a th:text="${'欢迎您 '+UserName}"></a></li>
         </ul>
         <ul class="right link-list">
+            <!--/*@thymesVar id="UserName" type="java.lang.String"*/-->
             <li class="first" th:if="${UserName} eq 'anonymousUser'"><a href="/register">注册</a></li>
             <li th:if="${UserName} eq 'anonymousUser'"><a href="/login">登录</a></li>
             <li th:if="${UserName} ne 'anonymousUser'"><a th:href="@{/user(name=${UserName})}">用户中心</a></li>
@@ -24,7 +26,7 @@
 </div>
 <div id="header">
     <div class="container">
-        <a href="index.html" class="logo" title="就业管理系统"><img src="images/logo.png" alt=""/></a>
+        <a href="/index" class="logo" title="就业管理系统"><img src="images/logo.png" alt=""/></a>
         <form action="https://news.uestc.edu.cn/" method="get" target="_blank" class="search-form">
             <input name="n" value="UestcNews.Front.Search.Page" type="hidden"/>
             <label>
