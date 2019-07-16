@@ -16,4 +16,7 @@ public interface AdminUserAdditionalInfoMapper {
 
     @Delete("delete from ADMINUSERADDITIONALINFO where username=#{username}")
     int deleteAdminUserInfo(String username);
+
+    @Select("select * from ADMINUSERADDITIONALINFO where authenticationCode=#{authenticationCode}")
+    AdminUserAdditionalInfo findAdminUserAdditionalInfoByCode(String authenticationCode);
 }

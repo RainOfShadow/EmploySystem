@@ -10,8 +10,13 @@ import javax.annotation.Resource;
 public class AdminInfoService {
     @Resource
     AdminUserAdditionalInfoMapper adminUserAdditionalInfoMapper;
+
     public AdminUserAdditionalInfo findAdminUserAdditionalInfoByUsername(String username) {
         return adminUserAdditionalInfoMapper.findAdminUserAdditionalInfoByUsername(username);
+    }
+
+    public AdminUserAdditionalInfo findAdminUserAdditionalInfoByCode(String authenticationCode) {
+        return adminUserAdditionalInfoMapper.findAdminUserAdditionalInfoByCode(authenticationCode);
     }
 
     public int addAdminInfo(String username, String authenticationCode) {

@@ -15,7 +15,7 @@
 <div class="topDiv">
     <header style="background: #0f6674;border-radius: 10px;">
         <div>
-            <h1 th:text="${'Graduate user '+SimpleUser.username}"></h1>
+            <h1 th:id="infoID" th:text="${'Graduate user '+SimpleUser.username}"></h1>
         </div>
         <h1>Welcome to the Information Center!</h1>
         <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
@@ -50,10 +50,10 @@
                            class="customInput" required
                            placeholder="confirm password">
                 </p>
-                <input type="reset" data-editable="false" value="Reset" class="formButton">
-                <button id="submitButton" class="formButton">Submit</button>
+                <button id="passwordResetButton" class="formButton">Reset</button>
+                <button id="passwordSubmitButton" class="formButton">Submit</button>
                 <div class="divideLine"></div>
-                <span id="registerResult"></span>
+                <span id="passwordResult"></span>
             </div>
         </div>
         <div class="DIV">
@@ -78,6 +78,18 @@
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'name':GraduateUserAdditionalInfo.name}">
                 </p>
+                <form>
+                    <label>
+                        <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                        <input type="radio" name="type" value="graduate"
+                               th:checked="${GraduateUserAdditionalInfo == null || GraduateUserAdditionalInfo.sex == 1?'true' :'false'}">male
+                    </label>
+                    <label>
+                        <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                        <input type="radio" name="type" value="company"
+                               th:checked="${GraduateUserAdditionalInfo != null && GraduateUserAdditionalInfo.sex == 0?'true' :'false'}">female
+                    </label>
+                </form>
                 <p>
                     <label for="schoolNo" class="customLabel" id="schoolNoLabel">
                         schoolNo
@@ -209,41 +221,41 @@
                         schoolLeftInfo
                     </label>
                     <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
-                    <input type="text" id="schoolLeftInfo"
-                           class="customInput"
-                           th:placeholder="${GraduateUserAdditionalInfo == null?'schoolLeftInfo':GraduateUserAdditionalInfo.schoolLeftInfo}">
+                    <textarea type="text" id="schoolLeftInfo"
+                              class="customInput"
+                              th:placeholder="${GraduateUserAdditionalInfo == null?'schoolLeftInfo':GraduateUserAdditionalInfo.schoolLeftInfo}"></textarea>
                 </p>
                 <p>
                     <label for="trainInfo" class="customLabel" id="trainInfoLabel">
                         trainInfo
                     </label>
                     <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
-                    <input type="text" id="trainInfo"
-                           class="customInput"
-                           th:placeholder="${GraduateUserAdditionalInfo == null?'trainInfo':GraduateUserAdditionalInfo.trainInfo}">
+                    <textarea type="text" id="trainInfo"
+                              class="customInput"
+                              th:placeholder="${GraduateUserAdditionalInfo == null?'trainInfo':GraduateUserAdditionalInfo.trainInfo}"></textarea>
                 </p>
                 <p>
                     <label for="practiceExperience" class="customLabel" id="practiceExperienceLabel">
                         practiceExperience
                     </label>
                     <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
-                    <input type="text" id="practiceExperience"
-                           class="customInput"
-                           th:placeholder="${GraduateUserAdditionalInfo == null?'practiceExperience':GraduateUserAdditionalInfo.practiceExperience}">
+                    <textarea type="text" id="practiceExperience"
+                              class="customInput"
+                              th:placeholder="${GraduateUserAdditionalInfo == null?'practiceExperience':GraduateUserAdditionalInfo.practiceExperience}"></textarea>
                 </p>
                 <p>
                     <label for="resume" class="customLabel" id="resumeLabel">
                         resume
                     </label>
                     <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
-                    <input type="text" id="resume"
-                           class="customInput"
-                           th:placeholder="${GraduateUserAdditionalInfo == null?'resume':GraduateUserAdditionalInfo.resume}">
+                    <textarea type="text" id="resume"
+                              class="customInput"
+                              th:placeholder="${GraduateUserAdditionalInfo == null?'resume':GraduateUserAdditionalInfo.resume}"></textarea>
                 </p>
-                <input type="reset" data-editable="false" value="Reset" class="formButton">
-                <button id="ubmitButton" class="formButton">Submit</button>
+                <button id="infoResetButton" class="formButton">Reset</button>
+                <button id="infoSubmitButton" class="formButton">Submit</button>
                 <div class="divideLine"></div>
-                <span id="egisterResult"></span>
+                <span id="infoResult"></span>
             </div>
         </div>
     </section>
@@ -256,43 +268,30 @@
         $(document).ajaxSend(function (e, xhr, options) {
             xhr.setRequestHeader(header, token);
         });
-        $("#submitButton").click(function () {
-            let username = $("#username").val();
-            let password = $("#password").val();
-            let confirmpassword = $("#confirmPassword").val();
-            if (password.length < 5 || password.length > 50) {
-                // $("#passwordLabel").after("<span style='color: red'> Password length should be 5-10</span>")
-                $("#passwordLabel").html("<span style='color: red'> Password length should be 5-10</span>");
-                return;
-            } else {
-                $("#passwordLabel").html("<span style='color: green'>Correct password length</span>")
+        $("#infoResetButton").click(function () {
+            $("div.DIV:last input.customInput,textarea.customInput").val("")
+        })
+        $("#infoSubmitButton").click(function () {
+            let inputArray = $("div.DIV:last input.customInput,textarea.customInput")
+            if (inputArray.toArray().some((e) => e.value !== "")) {
+                $.post("/graduateInfoModifier", {
+                        info: inputArray.toArray().map((e) => e.value ? e.value : e.placeholder).toString()
+                    }, function (data, status, jqXHR) {
+                        if (data) {
+                            if (data.toString() === "true") {
+                                $("#infoResult").html("<span style='color: green'>Modification succeeded!</span>");
 
-            }
-
-            if (confirmpassword !== password) {
-                $("#confirmPasswordLabel").html("<span style='color: red'>Not matched, try again!</span>")
-                return;
-            } else {
-                $("#confirmPasswordLabel").html("<span style='color: green'>matched, congratulations!</span>")
-            }
-            $.post("/doRegister", {
-                "username": username,
-                "password": password,
-                "type": $("input:radio:checked").val()
-            }, function (data, status, jqXHR) {
-                if (data) {
-                    if (data.toString() === "true") {
-                        $("#registerResult").html("<span style='color: green'>Register succeeded! <a href='/login'>login</a></span>");
-                        $("#usernameLabel").html("<span style='color: green'>Valid username!</span>")
-                    } else {
-                        $("#usernameLabel").html("<span style='color: red'>Invalid username! Try another.</span>")
-                        $("#registerResult").html("<span style='color: red'>Register failed!</span>");
+                            } else if (data.toString() === "505") {
+                                $("#infoResult").html("<span style='color: red'>Inner bug raised</span>");
+                            }
+                        }
                     }
-
-                }
-            })
-            // alert("username: " + username + " password: " + password + " " + $("input:radio:checked").val());
+                );
+            } else {
+                $("#infoResult").html("<span style='color: green'>Nothing need to change</span>");
+            }
         })
     });
 </script>
+<script th:src="@{js/passwordModifier.js}"></script>
 </html>

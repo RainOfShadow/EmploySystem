@@ -16,7 +16,7 @@
 <div class="topDiv">
     <header style="background: #0f6674;border-radius: 10px;">
         <div>
-            <h1 th:text="${'Admin user '+SimpleUser.username}"></h1>
+            <h1 th:id="infoID" th:text="${'Admin user '+SimpleUser.username}"></h1>
         </div>
         <h1>Welcome to the Information Center!</h1>
         <!--/*@thymesVar id="AdminUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.AdminUserAdditionalInfo"*/-->
@@ -51,10 +51,10 @@
                            class="customInput" required
                            placeholder="confirm password">
                 </p>
-                <input type="reset" data-editable="false" value="Reset" class="formButton">
-                <button id="submitButton" class="formButton">Submit</button>
+                <button id="passwordResetButton" class="formButton">Reset</button>
+                <button id="passwordSubmitButton" class="formButton">Submit</button>
                 <div class="divideLine"></div>
-                <span id="registerResult"></span>
+                <span id="passwordResult"></span>
             </div>
         </div>
         <div class="DIV">
@@ -70,10 +70,10 @@
                            th:disabled="${AdminUserAdditionalInfo != null?'true' :'false'}"
                            th:placeholder="${AdminUserAdditionalInfo == null?'authenticationCode':AdminUserAdditionalInfo.authenticationCode}">
                 </p>
-                <input type="reset" data-editable="false" value="Reset" class="formButton">
-                <button id="ubmitButton" class="formButton">Submit</button>
+                <button class="formButton" id="authResetButton">Reset</button>
+                <button id="authSubmitButton" class="formButton">Submit</button>
                 <div class="divideLine"></div>
-                <span id="egisterResult"></span>
+                <span id="authResult"></span>
             </div>
         </div>
     </section>
@@ -86,43 +86,33 @@
         $(document).ajaxSend(function (e, xhr, options) {
             xhr.setRequestHeader(header, token);
         });
-        $("#submitButton").click(function () {
-            let username = $("#username").val();
-            let password = $("#password").val();
-            let confirmpassword = $("#confirmPassword").val();
-            if (password.length < 5 || password.length > 50) {
-                // $("#passwordLabel").after("<span style='color: red'> Password length should be 5-10</span>")
-                $("#passwordLabel").html("<span style='color: red'> Password length should be 5-10</span>");
-                return;
-            } else {
-                $("#passwordLabel").html("<span style='color: green'>Correct password length</span>")
-
-            }
-
-            if (confirmpassword !== password) {
-                $("#confirmPasswordLabel").html("<span style='color: red'>Not matched, try again!</span>")
-                return;
-            } else {
-                $("#confirmPasswordLabel").html("<span style='color: green'>matched, congratulations!</span>")
-            }
-            $.post("/doRegister", {
-                "username": username,
-                "password": password,
-                "type": $("input:radio:checked").val()
-            }, function (data, status, jqXHR) {
-                if (data) {
-                    if (data.toString() === "true") {
-                        $("#registerResult").html("<span style='color: green'>Register succeeded! <a href='/login'>login</a></span>");
-                        $("#usernameLabel").html("<span style='color: green'>Valid username!</span>")
-                    } else {
-                        $("#usernameLabel").html("<span style='color: red'>Invalid username! Try another.</span>")
-                        $("#registerResult").html("<span style='color: red'>Register failed!</span>");
-                    }
-
-                }
-            })
-            // alert("username: " + username + " password: " + password + " " + $("input:radio:checked").val());
+        $("#authResetButton").click(function () {
+            $("#authenticationCode").val("");
         })
+        $("#authSubmitButton").click(function () {
+            let authenticationCode = $("#authenticationCode").val();
+            let username = document.title;
+            $.post("/AdminAuthentication",
+                {
+                    'username': username,
+                    'authenticationCode': authenticationCode
+                }, function (data, status, jqXHR) {
+                    if (data) {
+                        if (data.toString() === "true") {
+                            $("#authResult").html("<span style='color: green'>Authentication code succeeded!</span>");
+                            $("#authenticationCodeLabel").html("<span style='color: green'>Valid username!</span>")
+                        } else if (data.toString() === "false") {
+                            $("#authenticationCodeLabel").html("<span style='color: red'>Invalid authentication code! Try another.</span>")
+                            $("#authResult").html("<span style='color: red'>failed!</span>");
+                        } else if (data.toString() === "505") {
+                            $("#authResult").html("<span style='color: red'>Inner bug raised</span>");
+                        }
+
+                    }
+                }
+            )
+        });
     });
 </script>
+<script th:src="@{js/passwordModifier.js}"></script>
 </html>

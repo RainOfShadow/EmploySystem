@@ -16,7 +16,7 @@
         <h1>Easy to register, happy to live!</h1>
     </header>
     <section>
-        <div class="DIV" >
+        <div class="DIV">
             <div class="CustomDiv">
                 <h1>Register</h1>
                 <div class="divideLine"></div>
@@ -73,7 +73,7 @@
         $("#submitButton").click(function () {
             let username = $("#username").val();
             let password = $("#password").val();
-            let confirmpassword = $("#confirmPassword").val();
+            let confirmPassword = $("#confirmPassword").val();
             if (password.length < 5 || password.length > 50) {
                 // $("#passwordLabel").after("<span style='color: red'> Password length should be 5-10</span>")
                 $("#passwordLabel").html("<span style='color: red'> Password length should be 5-10</span>");
@@ -83,7 +83,7 @@
 
             }
 
-            if (confirmpassword !== password) {
+            if (confirmPassword !== password) {
                 $("#confirmPasswordLabel").html("<span style='color: red'>Not matched, try again!</span>")
                 return;
             } else {
@@ -92,7 +92,7 @@
             $.post("/doRegister", {
                 "username": username,
                 "password": password,
-                "type": $("input:radio:checked").val()
+                "type": $("input:radio:checked").val().toUpperCase()
             }, function (data, status, jqXHR) {
                 if (data) {
                     if (data.toString() === "true") {

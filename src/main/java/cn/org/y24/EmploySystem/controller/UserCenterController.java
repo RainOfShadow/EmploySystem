@@ -43,11 +43,11 @@ public class UserCenterController {
             case "ADMIN":
                 model.addAttribute("AdminUserAdditionalInfo", adminInfoService.findAdminUserAdditionalInfoByUsername(username));
                 return "adminUserInfoCenter";
-            case "company":
+            case "COMPANY":
 
                 model.addAttribute("CompanyUserAdditionalInfo", companyService.findCompanyInfoByUsername(username));
                 return "companyUserInfoCenter";
-            case "graduate":
+            case "GRADUATE":
                 model.addAttribute("GraduateUserAdditionalInfo", graduateInfoService.findGraduateInfoByUsername(username));
                 return "graduateUserInfoCenter";
             default:

@@ -10,12 +10,11 @@
     <title th:text="${SimpleUser.username}"></title>
 </head>
 <body>
-</div>
 <!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
 <div class="topDiv">
     <header style="background: #0f6674;border-radius: 10px;">
         <div>
-            <h1 th:text="${'Company user '+SimpleUser.username}"></h1>
+            <h1 th:id="infoID" th:text="${'Company user '+SimpleUser.username}"></h1>
         </div>
         <h1>Welcome to the Information Center!</h1>
         <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
@@ -50,10 +49,10 @@
                            class="customInput" required
                            placeholder="confirm password">
                 </p>
-                <input type="reset" data-editable="false" value="Reset" class="formButton">
-                <button id="submitButton" class="formButton">Submit</button>
+                <button id="passwordResetButton" class="formButton">Reset</button>
+                <button id="passwordSubmitButton" class="formButton">Submit</button>
                 <div class="divideLine"></div>
-                <span id="registerResult"></span>
+                <span id="passwordResult"></span>
             </div>
         </div>
         <div class="DIV">
@@ -62,12 +61,21 @@
                 <div class="divideLine"></div>
                 <p>
                     <label for="id" class="customLabel" id="idLabel">
-                        name
+                        id
                     </label>
+                    <br>
                     <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
                     <input type="text" id="id" class="customInput" name="id"
                            th:disabled="${CompanyUserAdditionalInfo != null?'true' :'false'}"
                            th:placeholder="${CompanyUserAdditionalInfo == null?'id':CompanyUserAdditionalInfo.id}">
+                </p>
+                <p>
+                    <label for="name" class="customLabel" id="nameLabel">
+                        name
+                    </label>
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <input type="text" id="name" class="customInput" name="name"
+                           th:placeholder="${CompanyUserAdditionalInfo == null?'id':CompanyUserAdditionalInfo.name}">
                 </p>
                 <p>
                     <label for="contractNo" class="customLabel" id="contractNoLabel">
@@ -91,14 +99,14 @@
                         Annual inspection status
                     </label>
                     <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
-                    <input type="text" id="annualInspectionStatus"
-                           class="customInput"
-                           th:placeholder="${CompanyUserAdditionalInfo == null?'Annual inspection status':CompanyUserAdditionalInfo.annualInspectionStatus}">
+                    <textarea type="text" id="annualInspectionStatus"
+                              class="customInput"
+                              th:placeholder="${CompanyUserAdditionalInfo == null?'Annual inspection status':CompanyUserAdditionalInfo.annualInspectionStatus}"></textarea>
                 </p>
-                <input type="reset" data-editable="false" value="Reset" class="formButton">
-                <button id="ubmitButton" class="formButton">Submit</button>
+                <button id="infoResetButton" class="formButton">Reset</button>
+                <button id="infoSubmitButton" class="formButton">Submit</button>
                 <div class="divideLine"></div>
-                <span id="egisterResult"></span>
+                <span id="infoResult"></span>
             </div>
         </div>
     </section>
@@ -111,43 +119,31 @@
         $(document).ajaxSend(function (e, xhr, options) {
             xhr.setRequestHeader(header, token);
         });
-        $("#submitButton").click(function () {
-            let username = $("#username").val();
-            let password = $("#password").val();
-            let confirmpassword = $("#confirmPassword").val();
-            if (password.length < 5 || password.length > 50) {
-                // $("#passwordLabel").after("<span style='color: red'> Password length should be 5-10</span>")
-                $("#passwordLabel").html("<span style='color: red'> Password length should be 5-10</span>");
-                return;
-            } else {
-                $("#passwordLabel").html("<span style='color: green'>Correct password length</span>")
-
-            }
-
-            if (confirmpassword !== password) {
-                $("#confirmPasswordLabel").html("<span style='color: red'>Not matched, try again!</span>")
-                return;
-            } else {
-                $("#confirmPasswordLabel").html("<span style='color: green'>matched, congratulations!</span>")
-            }
-            $.post("/doRegister", {
-                "username": username,
-                "password": password,
-                "type": $("input:radio:checked").val()
-            }, function (data, status, jqXHR) {
-                if (data) {
-                    if (data.toString() === "true") {
-                        $("#registerResult").html("<span style='color: green'>Register succeeded! <a href='/login'>login</a></span>");
-                        $("#usernameLabel").html("<span style='color: green'>Valid username!</span>")
-                    } else {
-                        $("#usernameLabel").html("<span style='color: red'>Invalid username! Try another.</span>")
-                        $("#registerResult").html("<span style='color: red'>Register failed!</span>");
-                    }
-
-                }
-            })
-            // alert("username: " + username + " password: " + password + " " + $("input:radio:checked").val());
+        $("#infoResetButton").click(function () {
+            $("div.DIV:last input.customInput,textarea.customInput").val("")
         })
-    });
+        $("#infoSubmitButton").click(function () {
+            let inputArray = $("div.DIV:last input.customInput,textarea.customInput")
+            if (inputArray.toArray().some((e) => e.value !== "")) {
+                $.post("/companyInfoModifier", {
+                        info: inputArray.toArray().map((e) => e.value ? e.value : e.placeholder).toString()
+                    }, function (data, status, jqXHR) {
+                        if (data) {
+                            if (data.toString() === "true") {
+                                $("#infoResult").html("<span style='color: green'>Modification succeeded!</span>");
+
+                            } else if (data.toString() === "505") {
+                                $("#infoResult").html("<span style='color: red'>Inner bug raised</span>");
+                            }
+                        }
+                    }
+                );
+            } else {
+                $("#infoResult").html("<span style='color: green'>Nothing need to change</span>");
+            }
+        })
+
+    })
 </script>
+<script th:src="@{js/passwordModifier.js}"></script>
 </html>
