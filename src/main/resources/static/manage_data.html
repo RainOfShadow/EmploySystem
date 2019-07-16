@@ -1,0 +1,175 @@
+
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <title>毕业生管理</title>
+    <link rel="stylesheet" href="css/info.css"/>
+
+</head>
+<body style="background-image:url(images/pagebg.jpg)">
+<div class="body-bg-mask"></div>
+<div class="page hide-right-bar">
+    <div class="page-inner">
+        <div id="topbar">
+            <div class="container">
+                <ul class="link-list left editable" data-editable="type=list;name=no_channel_top">
+                    <!--/*@thymesVar id="UserName" type="java.lang.String"*/-->
+                    <li th:if="${UserName} ne 'anonymousUser'"><a th:text="${'欢迎您 '+UserName}"></a ></li>
+                </ul>
+                <ul class="right link-list">
+                    <li class="first" th:if="${UserName} eq 'anonymousUser'"><a href=" ">注册</a ></li>
+                    <!--/*@thymesVar id="UserName" type="java.lang.String"*/-->
+                    <li th:if="${UserName} eq 'anonymousUser'"><a href="/login">登录</a ></li>
+                    <li th:if="${UserName} ne 'anonymousUser'"><a th:href="@{/user(name=${UserName})}">用户中心</a ></li>
+                    <li th:if="${UserName} ne 'anonymousUser'"><a th:href="@{/logout}">退出登陆</a ></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="header">
+            <div class="container">
+                <a href="index.html" class="logo" title="就业管理系统"><img src="images/logo.png" alt=""/></a>
+                <!--校庆结束后恢复
+                -->
+                <form action="https://news.uestc.edu.cn/" method="get" target="_blank" class="search-form">
+                    <input name="n" value="UestcNews.Front.Search.Page" type="hidden"/>
+                    <input type="text" name="Keyword" placeholder="站内搜索"/>
+                    <input class="btn" type="submit" value="Search"/>
+                </form>
+            </div>
+        </div>
+        
+        <!-- 资讯信息分类展示 -->
+        <div id="navi">
+            <div class="container">
+                <ul class="navigations">
+                    
+                    <li class="first odd nth1">
+                        <a class="navigation" href="http://bbs.yingjiesheng.com/forum-542-1.html" target="_self">最新公告</a>
+                    </li>
+                    
+                    <li class="even nth2">
+                        <a class="navigation" href="http://www.juxian.com/">人才推荐</a>
+                    </li>
+                    
+                    <li class="odd nth3">
+                        <a class="navigation" href="http://bbs.uestc.edu.cn/forum.php?mod=viewthread&tid=1770154&extra=page%3D1">最新职位</a>
+                    </li>
+                    
+                    <li class="even nth4">
+                        <a class="navigation" href="http://www.yingjiesheng.com/2019/" target="_blank">最新调查</a>
+                    </li>
+                    
+                    <li class="odd nth5">
+                        <a class="navigation" href="https://fanqizha.58.com/?PGTID=0d302408-0006-60b6-b306-3ec0eadada27&ClickID=8" target="_self">政策法规</a>
+                    </li>
+                    
+                    <li class="even nth6">
+                        <a class="navigation" href="https://b2b.hc360.com/supplyself/503578866.html" target="_blank">指导培训</a>
+                    </li>
+                    
+                    <li class="last odd nth7">
+                        <a class="navigation" href="http://bbs.uestc.edu.cn/forum.php?mod=viewthread&tid=1767645&extra=page%3D1" target="">实习兼职</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div id="inner-page">
+            <div class="container clearfix">
+                <div class="left-column">
+                    <div class="left-top-image">
+                        <img src="images/left-top.jpg" alt=""/>
+                    </div>
+                    <ul class="left-navi">
+                        <li class="first odd nth1">
+                            <a href="manage_basicInfo.html">基本资料</a>
+                        </li>  
+                        <li class="even nth2">
+                            <a href="manage_IdInfo.html">证明材料</a>
+                        </li>
+                        <li class="odd nth3">
+                            <a href="manage_selfRcm.html">自荐材料</a>
+                        </li>
+                        <li class="even nth4">
+                            <a href="manage_rcm.html">推荐材料</a>
+                        </li>
+                        <li class="odd nth5">
+                            <a href="manage_sign.html">签约材料</a>
+                        </li>
+                        <li class="last even nth6 active">
+                            <a>档案材料</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <div class="page-title">
+                        <div class="page-title-text">档案材料</div>
+                        <div class="page-position">
+                            <a href="index.html">首页</a>
+                            
+                             / <a>毕业生管理</a>
+                            
+                        </div>
+                    </div>
+                    <div class="page-content clearfix">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <div class="footer-friend-link clearfix" data-editable="type=list;name=bottom-links">
+                    <ul>
+                        
+                        <li class="first"><a href="http://www.gov.cn/" target="_blank">中国政府网</a></li>
+                        
+                        <li><a href="http://www.moe.gov.cn/" target="_blank">教育部</a></li>
+                        
+                        <li><a href="http://www.miit.gov.cn/n11293472/index.html" target="_blank">工业和信息化部</a></li>
+                        
+                        <li><a href="http://www.scedu.net/" target="_blank">四川省教育厅</a></li>
+                        
+                        <li><a href="http://www.univs.cn/" target="_blank">中国大学生在线</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer-bottom clearfix">
+                    <div class="left">
+                        <div class="editable" data-editable="type=fragment;name=footer-left-content">
+                            <p>
+清水河校区：成都市高新区（西区）西源大道2006号　邮编： 611731   </p>
+<p>
+沙河校区：成都市建设北路二段四号　邮编：610054</p>
+<p>
+蜀ICP备 05006379 号   I　川公网安备 51019002000280 号 </p>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div>
+                            <a href="491dbbbf56276749f811c02073c07bca.html" style="margin-right:10px;"> 
+                                <img src="images/wechat-logo.png" alt=""/>
+                            </a>
+                            <a target="_blank" href="http://weibo.com/u/3982954755">
+                                <img src="images/weibo-logo.png" alt=""/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:none">
+                <script src="//s4.cnzz.com/stat.php?id=5947016&amp;web_id=5947016" language="JavaScript"></script>
+            </div>
+        </div>
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/uestc.js"></script>
+        <script src="js/grayscale.js"></script>
+        
+    </div>
+</div>
+
+
+</body></html>
