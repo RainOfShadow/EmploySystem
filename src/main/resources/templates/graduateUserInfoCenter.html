@@ -6,19 +6,19 @@
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" th:href="@{css/CustomForm.css}">
-    <!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
+    <!--/*@thymesVar id="SimpleUser" type="com.group.employsystem.entity.SimpleUser"*/-->
     <title th:text="${SimpleUser.username}"></title>
 </head>
 <body>
 </div>
-<!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
+<!--/*@thymesVar id="SimpleUser" type="com.group.employsystem.entity.SimpleUser"*/-->
 <div class="topDiv">
     <header style="background: #0f6674;border-radius: 10px;">
         <div>
             <h1 th:id="infoID" th:text="${'Graduate user '+SimpleUser.username}"></h1>
         </div>
         <h1>Welcome to the Information Center!</h1>
-        <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+        <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
         <p th:text="${GraduateUserAdditionalInfo != null?'Additional information is logged. you can modify it now.' :'Additional information is not logged. you can add it now.'}">
         </p>
     </header>
@@ -64,7 +64,7 @@
                     <label for="idCardNo" class="customLabel" id="idLabel">
                         idCardNo
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="idCardNo" class="customInput" name="idCardNo"
                            th:disabled="${GraduateUserAdditionalInfo != null?'true' :'false'}"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'idCardNo':GraduateUserAdditionalInfo.idCardNo}">
@@ -73,7 +73,7 @@
                     <label for="name" class="customLabel" id="nameLabel">
                         name
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="name"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'name':GraduateUserAdditionalInfo.name}">
@@ -82,7 +82,7 @@
                     <label for="schoolNo" class="customLabel" id="schoolNoLabel">
                         schoolNo
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="schoolNo"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'schoolNo':GraduateUserAdditionalInfo.schoolNo}">
@@ -91,7 +91,7 @@
                     <label for="contractNo" class="customLabel" id="contractNoLabel">
                         Contract No
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="contractNo" class="customInput" name="contractNo"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'contractNo':GraduateUserAdditionalInfo.contractNo}">
                 </p>
@@ -99,7 +99,7 @@
                     <label for="emailAddress" class="customLabel" id="emailAddressLabel">
                         Email address
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="emailAddress"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'Email address':GraduateUserAdditionalInfo.emailAddress}">
@@ -108,7 +108,7 @@
                     <label for="othersReferralStuffID" class="customLabel" id="othersReferralStuffIDLabel">
                         othersReferralStuffID
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="othersReferralStuffID"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'othersReferralStuffID':GraduateUserAdditionalInfo.othersReferralStuffID}">
@@ -117,7 +117,7 @@
                     <label for="selfReferralStuffID" class="customLabel" id="selfReferralStuffIDLabel">
                         selfReferralStuffID
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="selfReferralStuffID"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'selfReferralStuffID':GraduateUserAdditionalInfo.selfReferralStuffID}">
@@ -126,7 +126,7 @@
                     <label for="school" class="customLabel" id="schoolLabel">
                         school
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="school"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'school':GraduateUserAdditionalInfo.school}">
@@ -135,7 +135,7 @@
                     <label for="sex" class="customLabel" id="sexLabel" >
                         sex Ps : male|female
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <br>
                     <input type="text" id="sex"
                            class="customInput"
@@ -145,7 +145,7 @@
                     <label for="national" class="customLabel" id="nationalLabel">
                         national
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="national"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'national':GraduateUserAdditionalInfo.national}">
@@ -154,7 +154,7 @@
                     <label for="degree" class="customLabel" id="degreeLabel">
                         degree
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="degree"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'degree':GraduateUserAdditionalInfo.degree}">
@@ -163,7 +163,7 @@
                     <label for="politicalLandscape" class="customLabel" id="politicalLandscapeLabel">
                         politicalLandscape
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="politicalLandscape"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'politicalLandscape':GraduateUserAdditionalInfo.politicalLandscape}">
@@ -172,7 +172,7 @@
                     <label for="address" class="customLabel" id="addressLabel">
                         address
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="address"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'address':GraduateUserAdditionalInfo.address}">
@@ -181,7 +181,7 @@
                     <label for="householdRegistration" class="customLabel" id="householdRegistrationLabel">
                         householdRegistration
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="householdRegistration"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'householdRegistration':GraduateUserAdditionalInfo.householdRegistration}">
@@ -190,7 +190,7 @@
                     <label for="maritalStatus" class="customLabel" id="maritalStatusLabel">
                         maritalStatus
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="maritalStatus"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'maritalStatus':GraduateUserAdditionalInfo.maritalStatus}">
@@ -199,7 +199,7 @@
                     <label for="schoolLeftTime" class="customLabel" id="schoolLeftTimeLabel">
                         schoolLeftTime Ps: YYYY-MM-DD HH:MM:SS
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <input type="text" id="schoolLeftTime"
                            class="customInput"
                            th:placeholder="${GraduateUserAdditionalInfo == null?'schoolLeftTime':GraduateUserAdditionalInfo.schoolLeftTime}">
@@ -208,7 +208,7 @@
                     <label for="schoolLeftInfo" class="customLabel" id="schoolLeftInfoLabel">
                         schoolLeftInfo
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <textarea type="text" id="schoolLeftInfo"
                               class="customInput"
                               th:placeholder="${GraduateUserAdditionalInfo == null?'schoolLeftInfo':GraduateUserAdditionalInfo.schoolLeftInfo}"></textarea>
@@ -217,7 +217,7 @@
                     <label for="trainInfo" class="customLabel" id="trainInfoLabel">
                         trainInfo
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <textarea type="text" id="trainInfo"
                               class="customInput"
                               th:placeholder="${GraduateUserAdditionalInfo == null?'trainInfo':GraduateUserAdditionalInfo.trainInfo}"></textarea>
@@ -226,7 +226,7 @@
                     <label for="practiceExperience" class="customLabel" id="practiceExperienceLabel">
                         practiceExperience
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <textarea type="text" id="practiceExperience"
                               class="customInput"
                               th:placeholder="${GraduateUserAdditionalInfo == null?'practiceExperience':GraduateUserAdditionalInfo.practiceExperience}"></textarea>
@@ -235,7 +235,7 @@
                     <label for="resume" class="customLabel" id="resumeLabel">
                         resume
                     </label>
-                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.GraduateUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="GraduateUserAdditionalInfo" type="com.group.employsystem.entity.sql.GraduateUserAdditionalInfo"*/-->
                     <textarea type="text" id="resume"
                               class="customInput"
                               th:placeholder="${GraduateUserAdditionalInfo == null?'resume':GraduateUserAdditionalInfo.resume}"></textarea>

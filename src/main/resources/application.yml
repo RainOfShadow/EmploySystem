@@ -1,15 +1,33 @@
 spring:
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/EmploySystem?userUnicode=true&characterEncoding=utf8
-    username: y24
-    password: yue
+    url: jdbc:mysql://127.0.0.1:3306/employsystem?userUnicode=true&characterEncoding=utf8
+    username: LY
+    password: 252198ly
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
   mvc:
     view:
       prefix: /
       suffix: .html
-  thymeleaf:
-    mode: HTML
-    encoding: UTF-8
-    cache: false
-    prefix: classpath:/templates/
-    suffix: .html
+    thymeleaf:
+      mode: HTML
+      encoding: UTF-8
+      cache: false
+      prefix: classpath:/templates/
+      suffix: .html
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    local-cache-scope: session
+  global-config:
+    db-config:
+      id-type: auto
+  mapper-locations: classpath*:**/mapper/xml/*.xml

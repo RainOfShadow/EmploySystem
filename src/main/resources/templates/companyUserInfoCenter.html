@@ -6,18 +6,18 @@
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" th:href="@{css/CustomForm.css}">
-    <!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
+    <!--/*@thymesVar id="SimpleUser" type="com.group.employsystem.entity.SimpleUser"*/-->
     <title th:text="${SimpleUser.username}"></title>
 </head>
 <body>
-<!--/*@thymesVar id="SimpleUser" type="cn.org.y24.EmploySystem.entity.SimpleUser"*/-->
+<!--/*@thymesVar id="SimpleUser" type="com.group.employsystem.entity.SimpleUser"*/-->
 <div class="topDiv">
     <header style="background: #0f6674;border-radius: 10px;">
         <div>
             <h1 th:id="infoID" th:text="${'Company user '+SimpleUser.username}"></h1>
         </div>
         <h1>Welcome to the Information Center!</h1>
-        <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+        <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="com.group.employsystem.entity.sql.CompanyUserAdditionalInfo"*/-->
         <p th:text="${CompanyUserAdditionalInfo != null?'Additional information is logged. you can modify it now.' :'Additional information is not logged. you can add it now.'}">
         </p>
     </header>
@@ -64,7 +64,7 @@
                         id
                     </label>
                     <br>
-                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="com.group.employsystem.entity.sql.CompanyUserAdditionalInfo"*/-->
                     <input type="text" id="id" class="customInput" name="id"
                            th:disabled="${CompanyUserAdditionalInfo != null?'true' :'false'}"
                            th:placeholder="${CompanyUserAdditionalInfo == null?'id':CompanyUserAdditionalInfo.id}">
@@ -73,7 +73,7 @@
                     <label for="name" class="customLabel" id="nameLabel">
                         name
                     </label>
-                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="com.group.employsystem.entity.sql.CompanyUserAdditionalInfo"*/-->
                     <input type="text" id="name" class="customInput" name="name"
                            th:placeholder="${CompanyUserAdditionalInfo == null?'id':CompanyUserAdditionalInfo.name}">
                 </p>
@@ -81,7 +81,7 @@
                     <label for="contractNo" class="customLabel" id="contractNoLabel">
                         Contract No
                     </label>
-                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="com.group.employsystem.entity.sql.CompanyUserAdditionalInfo"*/-->
                     <input type="text" id="contractNo" class="customInput" name="contractNo"
                            th:placeholder="${CompanyUserAdditionalInfo == null?'contractNo':CompanyUserAdditionalInfo.contractNo}">
                 </p>
@@ -89,7 +89,7 @@
                     <label for="emailAddress" class="customLabel" id="emailAddressLabel">
                         Email address
                     </label>
-                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="com.group.employsystem.entity.sql.CompanyUserAdditionalInfo"*/-->
                     <input type="text" id="emailAddress"
                            class="customInput"
                            th:placeholder="${CompanyUserAdditionalInfo == null?'Email address':CompanyUserAdditionalInfo.emailAddress}">
@@ -98,7 +98,7 @@
                     <label for="annualInspectionStatus" class="customLabel" id="annualInspectionStatusLabel">
                         Annual inspection status
                     </label>
-                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="cn.org.y24.EmploySystem.entity.sql.CompanyUserAdditionalInfo"*/-->
+                    <!--/*@thymesVar id="CompanyUserAdditionalInfo" type="com.group.employsystem.entity.sql.CompanyUserAdditionalInfo"*/-->
                     <textarea type="text" id="annualInspectionStatus"
                               class="customInput"
                               th:placeholder="${CompanyUserAdditionalInfo == null?'Annual inspection status':CompanyUserAdditionalInfo.annualInspectionStatus}"></textarea>
