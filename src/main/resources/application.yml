@@ -5,7 +5,7 @@ spring:
       charset: UTF-8
       force: true
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/employsystem?userUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3236/employ_system?userUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
     username: LY
     password: 252198ly
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -23,6 +23,7 @@ spring:
       cache: false
       prefix: classpath:/templates/
       suffix: .html
+
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

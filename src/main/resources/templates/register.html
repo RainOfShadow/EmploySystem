@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-       
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <meta charset="UTF-8">
         <title>register</title>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
@@ -12,31 +9,28 @@
 </head>
 <body>
 <div class="topDiv">
-    <header>
-        <h1>Easy to register, happy to live!</h1>
-    </header>
     <section>
         <div class="DIV">
             <div class="CustomDiv">
-                <h1>Register</h1>
+                <h1>毕业管理系统注册</h1>
                 <div class="divideLine"></div>
                 <p>
                     <label for="username" class="customLabel" id="usernameLabel">
-                        Your username
+                        用户名
                     </label>
                     <input type="text" id="username" class="customInput" name="username" required
                            placeholder="username">
                 </p>
                 <p>
                     <label for="password" class="customLabel" id="passwordLabel">
-                        Your password
+                        密码
                     </label>
                     <input type="password" id="password" class="customInput" name="password" required
                            placeholder="password">
                 </p>
                 <p>
                     <label for="password" class="customLabel" id="confirmPasswordLabel">
-                        Confirm password
+                        再次确认
                     </label>
                     <label for="confirmPassword"></label>
                     <input type="password" id="confirmPassword"
@@ -44,18 +38,17 @@
                            placeholder="confirm password">
                 <form>
                     <label>
-                        <input type="radio" name="type" value="graduate" checked>Graduate
+                        <input type="radio" name="type" value="0" checked>毕业生
                     </label>
                     <label>
-                        <input type="radio" name="type" value="company">Company
+                        <input type="radio" name="type" value="1">公司
                     </label>
                 </form>
                 </p>
                 <input type="reset" data-editable="false" value="Reset" class="formButton">
                 <button id="submitButton" class="formButton">Sign up</button>
                 <br>
-                <a href="/userRecovery">Forgot password?</a>
-                <a href="/login">Already register?</a>
+                <a href="/login">去登录</a>
                 <div class="divideLine"></div>
                 <span id="registerResult"></span>
             </div>
@@ -65,47 +58,33 @@
 </body>
 <script>
     $(function () {
-        var token = $("meta[name='_csrf']").attr("content");
-        var header = $("meta[name='_csrf_header']").attr("content");
-        $(document).ajaxSend(function (e, xhr, options) {
-            xhr.setRequestHeader(header, token);
-        });
         $("#submitButton").click(function () {
             let username = $("#username").val();
             let password = $("#password").val();
             let confirmPassword = $("#confirmPassword").val();
-            if (password.length < 5 || password.length > 50) {
-                // $("#passwordLabel").after("<span style='color: red'> Password length should be 5-10</span>")
-                $("#passwordLabel").html("<span style='color: red'> Password length should be 5-10</span>");
+            if (password.length < 5 || password.length > 15) {
+                $("#passwordLabel").html("<span style='color: red'> 长度需要在 5-15</span>");
                 return;
-            } else {
-                $("#passwordLabel").html("<span style='color: green'>Correct password length</span>")
-
             }
 
             if (confirmPassword !== password) {
-                $("#confirmPasswordLabel").html("<span style='color: red'>Not matched, try again!</span>")
+                $("#confirmPasswordLabel").html("<span style='color: red'>两次密码不一致!</span>")
                 return;
-            } else {
-                $("#confirmPasswordLabel").html("<span style='color: green'>matched, congratulations!</span>")
             }
+
             $.post("/doRegister", {
                 "username": username,
                 "password": password,
-                "type": $("input:radio:checked").val().toUpperCase()
+                "role": $("input:radio:checked").val().toUpperCase()
             }, function (data, status, jqXHR) {
                 if (data) {
                     if (data.toString() === "true") {
-                        $("#registerResult").html("<span style='color: green'>Register succeeded! <a href='/login'>login</a></span>");
-                        $("#usernameLabel").html("<span style='color: green'>Valid username!</span>")
+                        window.location.href='login';
                     } else {
-                        $("#usernameLabel").html("<span style='color: red'>Invalid username! Try another.</span>")
-                        $("#registerResult").html("<span style='color: red'>Register failed!</span>");
+                        alert("注册失败，该用户已存在")
                     }
-
                 }
             })
-            // alert("username: " + username + " password: " + password + " " + $("input:radio:checked").val());
         })
     });
 </script>

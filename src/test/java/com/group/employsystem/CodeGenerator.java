@@ -44,7 +44,7 @@ public class CodeGenerator {
 
         // 3、数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/employsystem?userUnicode=true&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3236/employ_system?userUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("LY");
         dsc.setPassword("252198ly");
