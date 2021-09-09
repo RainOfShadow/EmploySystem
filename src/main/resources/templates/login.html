@@ -1,30 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Please sign in</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+    <meta charset="UTF-8">
+        <title>register</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{css/CustomForm.css}">
+
 </head>
 <body>
-<div class="container">
-    <form class="form-signin" method="post" action="/login">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required
-                   autofocus>
-        </p>
-        <p>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-        </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
+<div class="topDiv">
+    <section>
+        <div class="DIV">
+            <div class="CustomDiv">
+                <h1>毕业管理系统登录</h1>
+                <div class="divideLine"></div>
+                <p>
+                    <label for="username" class="customLabel" id="usernameLabel">
+                        用户名
+                    </label>
+                    <input type="text" id="username" class="customInput" name="username" required
+                           placeholder="username">
+                </p>
+                <p>
+                    <label for="password" class="customLabel" id="passwordLabel">
+                        密码
+                    </label>
+                    <input type="password" id="password" class="customInput" name="password" required
+                           placeholder="password">
+                </p>
+                <form>
+                    <label>
+                        <input type="radio" name="type" value="0" checked>毕业生
+                    </label>
+                    <label>
+                        <input type="radio" name="type" value="1">公司
+                    </label>
+                    <label>
+                        <input type="radio" name="type" value="2">管理员
+                    </label>
+                </form>
+                </p>
+                <button id="submitButton" class="formButton">登录</button>
+                <button  class="formButton" style="margin-left: 50px"><a href="/register" style="color: white">去注册</a></button>
+                <div class="divideLine"></div>
+                <span id="registerResult"></span>
+            </div>
+        </div>
+    </section>
 </div>
 </body>
+<script th:inline="javascript">
+    $(function () {
+        $("#submitButton").click(function () {
+            let username = $("#username").val();
+            let password = $("#password").val();
+            if (password.length < 5 || password.length > 15) {
+                $("#passwordLabel").html("<span style='color: red'> 长度需要在 5-15</span>");
+                return;
+            }
+            $.post("/doLogin", {
+                "username": username,
+                "password": password,
+                "role": $("input:radio:checked").val().toUpperCase()
+            }, function (data, status, jqXHR) {
+                if (data) {
+                    if (data.toString() == "err") {
+                        alert("账号密码错误")
+                    } else {
+                        window.location.href='index';
+                    }
+                }
+            })
+        })
+    });
+</script>
+
 </html>

@@ -45,10 +45,8 @@
                     </label>
                 </form>
                 </p>
-                <input type="reset" data-editable="false" value="Reset" class="formButton">
-                <button id="submitButton" class="formButton">Sign up</button>
-                <br>
-                <a href="/login">去登录</a>
+                <button id="submitButton" class="formButton">注册</button>
+                <button  class="formButton" style="margin-left: 50px"><a href="/login" style="color: white">去登录</a></button>
                 <div class="divideLine"></div>
                 <span id="registerResult"></span>
             </div>
@@ -77,12 +75,10 @@
                 "password": password,
                 "role": $("input:radio:checked").val().toUpperCase()
             }, function (data, status, jqXHR) {
-                if (data) {
-                    if (data.toString() === "true") {
-                        window.location.href='login';
-                    } else {
-                        alert("注册失败，该用户已存在")
-                    }
+                if (data.toString() === "true") {
+                    window.location.href='login';
+                } else {
+                    alert("注册失败，该用户已存在")
                 }
             })
         })

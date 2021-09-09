@@ -1,6 +1,7 @@
 package com.group.employsystem.controller;
 
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author ly
  * @since 2021-09-07
  */
-@RestController
-@RequestMapping("/employsystem/statistics")
+@Controller
 public class StatisticsController {
 
 }
